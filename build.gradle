@@ -9,6 +9,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.android.library'
+}
+
 allprojects {
     repositories {
         google()
@@ -20,9 +24,9 @@ allprojects {
     }
 }
 
-apply plugin: 'com.android.library'
 
 android {
+    namespace 'com.cbtint.santintdriver'
     compileSdkVersion 33
     defaultConfig {
         minSdkVersion 21
@@ -49,9 +53,10 @@ repositories {
 }
 
 dependencies {
-    // Santint AAR dependencies
-    implementation(name: 'santintdriver-release', ext: 'aar')
-    implementation(name: 'spectrumdriver-release', ext: 'aar')
+    // Santint AAR dependencies - these will be included in the published library
+    // Note: The actual AAR files should be included in the repository for JitPack to access them
+    implementation files('santintdriver-release.aar')
+    implementation files('spectrumdriver-release.aar')
     
     // Required androidx dependencies
     implementation 'androidx.appcompat:appcompat:1.6.1'

@@ -1,5 +1,7 @@
 # Built application files
 *.apk
+# Note: AAR files are needed for JitPack, so they should be committed
+# *.aar
 
 # Files for the ART/Dalvik VM
 *.dex
