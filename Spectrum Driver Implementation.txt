@@ -1,0 +1,157 @@
+Spectrum Driver TREE
+
+├───.gradle
+│   ├───7.0.2
+│   │   ├───dependencies-accessors
+│   │   ├───executionHistory
+│   │   ├───fileChanges
+│   │   ├───fileHashes
+│   │   └───vcsMetadata-1
+│   ├───buildOutputCleanup
+│   ├───checksums
+│   └───vcs-1
+├───gradle
+│   └───wrapper
+└───src
+    └───main
+
+=========================================================================================
+
+In build.gradle
+
+
+------------------------------
+
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        flatDir {
+            dirs '.'
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 31
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs '.'
+    }
+}
+
+dependencies {
+    implementation(name: 'spectrumdriver-release', ext: 'aar')
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.cbtint'
+            artifactId = 'spectrumdriver'
+            version = '3.0.0'
+
+            artifact("spectrumdriver-release.aar")
+
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.implementation.dependencies.each { dep ->
+                    if (dep.group != null && dep.name != null && dep.version != null) {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', dep.group)
+                        dependencyNode.appendNode('artifactId', dep.name)
+                        dependencyNode.appendNode('version', dep.version)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+in gradle-wrapper.properties
+
+=============================================================================
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https://services.gradle.org/distributions/gradle-7.0.2-all.zip
+===============================================================================
+
+This Gradle Version will depend on the Cloud Server which hosts our spectrum-driver.aar file
+
+
+
+==================================================================================
+
+in settings.gradle
+
+rootProject.name = 'spectrumdriver'
+
+
+==================================================================================
+
+in src/main/AndroidManifest.xml
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cbtint.spectrumdriver">
+    <application>
+        <!-- Add your application components here -->
+    </application>
+</manifest>
+
+
+==============================================================================
+
+
+After all this Upload the project in git and then go to releases ,
+create a tag, and give a title then make a release,
+
+After creating a release like v6 for example,
+
+Login in to your jitpack account using your GitHub.
+
+You can find all the repo's in the left panel, click the library repo, you can find the releases by TAG name
+
+If the version's Auto CICD Compilation is success, then you can find the Publish URL below as
+
+	dependencies {
+	        implementation 'com.github.pjdpaulsagnik:CB-TINT-SPECTRUM-DRIVER:Tag'
+	}
+ 
+place the following in the your project's plugin -
+
+build.gradle file
+
+
