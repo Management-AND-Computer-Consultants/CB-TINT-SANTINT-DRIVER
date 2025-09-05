@@ -6,7 +6,7 @@ Before publishing to JitPack, ensure you have:
 
 1. ✅ **GitHub Repository**: Your code is in a GitHub repository
 2. ✅ **Gradle Wrapper**: Complete gradle wrapper setup
-3. ✅ **AAR Files**: Santint AAR files are committed to the repository
+3. ✅ **AAR File**: Santint AAR file is committed to the repository
 4. ✅ **Proper Configuration**: All build files are properly configured
 
 ## Step 1: Complete Gradle Wrapper Setup
@@ -36,17 +36,16 @@ curl -L -o gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/ra
 ```
 Should show Gradle 7.5
 
-## Step 2: Ensure AAR Files are Committed
+## Step 2: Ensure AAR File is Committed
 
-Make sure these files are in your repository:
+Make sure this file is in your repository:
 - `santintdriver-release.aar`
-- `spectrumdriver-release.aar`
 
 Check with:
 ```bash
 git status
-git add *.aar
-git commit -m "Add AAR files for JitPack"
+git add santintdriver-release.aar
+git commit -m "Add AAR file for JitPack"
 ```
 
 ## Step 3: Test Local Build
@@ -107,9 +106,9 @@ dependencies {
    - Ensure `gradlew`, `gradlew.bat`, and `gradle/wrapper/gradle-wrapper.jar` exist
    - Make sure gradle-wrapper.jar is the actual file, not just "PK"
 
-2. **"AAR files not found"**
-   - Ensure AAR files are committed to the repository
-   - Check that they're not in .gitignore
+2. **"AAR file not found"**
+   - Ensure AAR file is committed to the repository
+   - Check that it's not in .gitignore
 
 3. **"Build failed"**
    - Check the JitPack build logs
@@ -145,7 +144,6 @@ CB-TINT-SANTINT-DRIVER/
 │   └── main/
 │       └── AndroidManifest.xml
 ├── santintdriver-release.aar
-├── spectrumdriver-release.aar
 └── proguard-rules.pro
 ```
 

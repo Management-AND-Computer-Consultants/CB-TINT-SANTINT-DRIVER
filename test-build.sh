@@ -18,14 +18,9 @@ if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
     exit 1
 fi
 
-# Check if AAR files exist
+# Check if AAR file exists
 if [ ! -f "santintdriver-release.aar" ]; then
     echo "❌ santintdriver-release.aar not found"
-    exit 1
-fi
-
-if [ ! -f "spectrumdriver-release.aar" ]; then
-    echo "❌ spectrumdriver-release.aar not found"
     exit 1
 fi
 

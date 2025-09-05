@@ -5,7 +5,6 @@ A JitPack-ready Android library for Santint color matching and tinting systems.
 ## Features
 
 - Santint AAR integration for color matching
-- Spectrum driver support
 - Tablet and mobile UI configurations
 - Camera integration for color capture
 - Bluetooth and serial communication support

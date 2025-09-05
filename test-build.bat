@@ -17,14 +17,9 @@ if not exist "gradle\wrapper\gradle-wrapper.jar" (
     exit /b 1
 )
 
-REM Check if AAR files exist
+REM Check if AAR file exists
 if not exist "santintdriver-release.aar" (
     echo ❌ santintdriver-release.aar not found
-    exit /b 1
-)
-
-if not exist "spectrumdriver-release.aar" (
-    echo ❌ spectrumdriver-release.aar not found
     exit /b 1
 )
 

@@ -38,7 +38,7 @@ This should show Gradle version 7.5.
 
 ## Important Notes
 
-1. The AAR files (`santintdriver-release.aar` and `spectrumdriver-release.aar`) must be committed to your Git repository for JitPack to access them.
+1. The AAR file (`santintdriver-release.aar`) must be committed to your Git repository for JitPack to access it.
 
 2. Make sure all files are committed and pushed to GitHub before testing with JitPack.
 
