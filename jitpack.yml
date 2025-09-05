@@ -2,11 +2,11 @@ jdk:
   - openjdk11
 
 before_install:
-  - chmod +x gradlew
-  - ./gradlew clean
+  - chmod +x gradlew || true
+  - ./gradlew --version || echo "Gradle wrapper not working, will use alternative approach"
 
 build:
-  - ./gradlew assembleRelease
+  - ./gradlew assembleRelease || (echo "Gradle wrapper failed, trying alternative build" && gradle assembleRelease)
 
 install:
-  - ./gradlew publishToMavenLocal
+  - ./gradlew publishToMavenLocal || (echo "Gradle wrapper failed, trying alternative install" && gradle publishToMavenLocal)
